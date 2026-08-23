@@ -1,12 +1,12 @@
 /* =========================================================
    TOMMY'S BEAUTY ESSENTIALS
-   VERSION 3 — PREMIUM MASTER STYLESHEET
-   Brand: Black + Cream + Blush + Rich Pink
+   VERSION 3 — COMPLETE PREMIUM POLISH
+   Glossy. Glamorous. Unapologetic.
 ========================================================= */
 
 
 /* =========================================================
-   1. BRAND COLOUR SYSTEM
+   1. BRAND VARIABLES
 ========================================================= */
 
 :root {
@@ -25,16 +25,27 @@
 
     --text: #222222;
     --muted: #777777;
+    --light-text: #999999;
 
     --border: #ebe3e7;
-    --light-border: #f0eaed;
+    --light-border: #f1ecef;
 
     --whatsapp: #25d366;
+
+    --shadow-sm: 0 5px 18px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 20px 45px rgba(0, 0, 0, 0.10);
+
+    --radius-sm: 5px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+
+    --container: 1400px;
 }
 
 
 /* =========================================================
-   2. GLOBAL RESET
+   2. RESET
 ========================================================= */
 
 * {
@@ -56,13 +67,13 @@ body {
 }
 
 img {
-    max-width: 100%;
     display: block;
+    max-width: 100%;
 }
 
 a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
 }
 
 button,
@@ -76,28 +87,34 @@ button {
     cursor: pointer;
 }
 
+::selection {
+    background: var(--pink);
+    color: var(--white);
+}
+
 
 /* =========================================================
-   3. PREMIUM HEADER
+   3. HEADER
 ========================================================= */
 
 .site-header {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.97);
-    border-bottom: 1px solid var(--border);
-
     position: sticky;
     top: 0;
-
     z-index: 1000;
 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    width: 100%;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border-bottom: 1px solid var(--border);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 }
 
 .header-main {
     width: 100%;
-    max-width: 1400px;
+    max-width: var(--container);
 
     min-height: 82px;
 
@@ -113,7 +130,7 @@ button {
 
 
 /* =========================================================
-   4. BRAND NAME
+   4. BRAND
 ========================================================= */
 
 .brand-name {
@@ -122,11 +139,11 @@ button {
     font-size: 24px;
     font-weight: 700;
 
-    letter-spacing: -0.6px;
+    letter-spacing: -0.7px;
 
     white-space: nowrap;
 
-    transition: color 0.3s ease;
+    transition: color 0.25s ease;
 }
 
 .brand-name:hover {
@@ -143,12 +160,12 @@ button {
     align-items: center;
     justify-content: flex-end;
 
-    gap: 20px;
+    gap: 18px;
 }
 
 
 /* =========================================================
-   6. HEADER SEARCH
+   6. SEARCH
 ========================================================= */
 
 .header-actions .search-box {
@@ -162,10 +179,11 @@ button {
 
     padding: 0 18px;
 
+    background: var(--ivory);
+
     border: 1px solid #ded8dc;
     border-radius: 30px;
 
-    background: var(--ivory);
     color: var(--text);
 
     font-size: 14px;
@@ -173,13 +191,13 @@ button {
     outline: none;
 
     transition:
-        border-color 0.3s ease,
-        box-shadow 0.3s ease,
-        background 0.3s ease;
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
 }
 
 .header-actions .search-box input::placeholder {
-    color: #999999;
+    color: var(--light-text);
 }
 
 .header-actions .search-box input:focus {
@@ -188,12 +206,12 @@ button {
     border-color: var(--pink);
 
     box-shadow:
-        0 4px 18px rgba(214, 51, 132, 0.10);
+        0 5px 20px rgba(214, 51, 132, 0.10);
 }
 
 
 /* =========================================================
-   7. HEADER CART
+   7. CART LINK
 ========================================================= */
 
 .header-cart {
@@ -204,7 +222,7 @@ button {
 
     white-space: nowrap;
 
-    transition: color 0.3s ease;
+    transition: color 0.25s ease;
 }
 
 .header-cart:hover {
@@ -219,31 +237,27 @@ button {
 .mobile-menu-btn {
     display: block;
 
-    border: none;
+    padding: 6px;
 
     background: transparent;
+
+    border: none;
 
     color: var(--black);
 
     font-size: 26px;
     line-height: 1;
 
-    padding: 5px;
-
     box-shadow: none;
 
-    transition:
-        color 0.3s ease,
-        transform 0.3s ease;
+    transition: color 0.25s ease;
 }
 
 .mobile-menu-btn:hover {
     background: transparent;
-
     color: var(--pink);
 
     transform: none;
-
     box-shadow: none;
 }
 
@@ -270,7 +284,7 @@ button {
     z-index: 2000;
 
     box-shadow:
-        -15px 0 40px rgba(0, 0, 0, 0.14);
+        -15px 0 45px rgba(0, 0, 0, 0.14);
 
     transition: right 0.35s ease;
 
@@ -288,39 +302,35 @@ button {
 
 .side-menu-header {
     display: flex;
-
     align-items: center;
     justify-content: space-between;
 
-    padding-bottom: 25px;
+    padding-bottom: 24px;
 
     border-bottom: 1px solid var(--border);
 }
 
 .side-menu-header h2 {
-    margin: 0;
-
     color: var(--black);
 
     font-size: 22px;
 }
 
 .close-menu-btn {
-    border: none;
+    padding: 0;
 
     background: transparent;
+
+    border: none;
 
     color: var(--black);
 
     font-size: 32px;
-
     line-height: 1;
-
-    padding: 0;
 
     box-shadow: none;
 
-    transition: color 0.3s ease;
+    transition: color 0.25s ease;
 }
 
 .close-menu-btn:hover {
@@ -329,7 +339,6 @@ button {
     color: var(--pink);
 
     transform: none;
-
     box-shadow: none;
 }
 
@@ -340,21 +349,20 @@ button {
 
 .side-menu-links {
     display: flex;
-
     flex-direction: column;
 
     margin-top: 25px;
 }
 
 .side-menu-links a {
+    padding: 16px 5px;
+
+    border-bottom: 1px solid var(--light-border);
+
     color: var(--text);
 
     font-size: 16px;
     font-weight: 500;
-
-    padding: 16px 5px;
-
-    border-bottom: 1px solid var(--light-border);
 
     transition:
         color 0.25s ease,
@@ -362,35 +370,38 @@ button {
 }
 
 .side-menu-links a:hover {
-    color: var(--pink);
-
     padding-left: 12px;
+
+    color: var(--pink);
 }
 
 .side-menu-links .side-cart-link {
     margin-top: 18px;
 
-    border: none;
+    padding: 15px 18px;
 
     background: var(--black);
 
-    color: var(--white);
+    border: none;
+    border-radius: var(--radius-sm);
 
-    padding: 15px 18px;
+    color: var(--white);
 
     text-align: center;
 
-    border-radius: 5px;
-
-    transition: background 0.3s ease;
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
 }
 
 .side-menu-links .side-cart-link:hover {
+    padding-left: 18px;
+
     background: var(--pink);
 
     color: var(--white);
 
-    padding-left: 18px;
+    transform: translateY(-2px);
 }
 
 
@@ -400,15 +411,13 @@ button {
 
 .menu-overlay {
     position: fixed;
-
     inset: 0;
-
-    background: rgba(17, 17, 17, 0.42);
 
     z-index: 1500;
 
-    opacity: 0;
+    background: rgba(17, 17, 17, 0.42);
 
+    opacity: 0;
     visibility: hidden;
 
     transition:
@@ -418,14 +427,11 @@ button {
 
 .menu-overlay.mobile-menu-open {
     opacity: 1;
-
     visibility: visible;
 }
 
 
-/* =========================================================
-   13. DISABLE OLD NAVIGATION
-========================================================= */
+/* Hide old navigation */
 
 .site-header nav,
 header.site-header nav {
@@ -434,114 +440,205 @@ header.site-header nav {
 
 
 /* =========================================================
-   14. HERO
+   13. HERO
 ========================================================= */
 
 .hero {
+    position: relative;
+
     min-height: 82vh;
 
+    padding: 100px 20px 90px;
+
     display: flex;
-
     flex-direction: column;
-
-    justify-content: center;
-
     align-items: center;
+    justify-content: center;
 
     text-align: center;
 
-    padding: 90px 20px;
+    overflow: hidden;
 
     background:
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(248, 232, 239, 0.90),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 85% 80%,
-            rgba(214, 51, 132, 0.08),
-            transparent 30%
-        ),
         linear-gradient(
-            135deg,
+            145deg,
             var(--white) 0%,
-            var(--cream) 50%,
+            var(--cream) 52%,
             var(--soft-blush) 100%
         );
 }
 
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    top: -190px;
+    left: -150px;
+
+    border-radius: 50%;
+
+    background: var(--blush);
+
+    opacity: 0.55;
+
+    filter: blur(5px);
+
+    pointer-events: none;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    right: -120px;
+    bottom: -120px;
+
+    border-radius: 50%;
+
+    background: rgba(214, 51, 132, 0.07);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   14. HERO KICKER
+========================================================= */
+
+.hero-standard {
+    position: relative;
+    z-index: 2;
+
+    margin-bottom: 22px;
+
+    color: var(--deep-pink);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+.hero-standard::before,
+.hero-standard::after {
+    content: "—";
+
+    margin: 0 9px;
+
+    color: var(--pink);
+}
+
+
+/* =========================================================
+   15. HERO HEADLINE
+========================================================= */
+
 .hero h2 {
+    position: relative;
+    z-index: 2;
+
     max-width: 900px;
-
-    font-size: clamp(42px, 6vw, 70px);
-
-    line-height: 1.08;
-
-    color: var(--black);
 
     margin-bottom: 25px;
 
-    letter-spacing: -2px;
+    color: var(--black);
+
+    font-size: clamp(44px, 6vw, 72px);
+
+    line-height: 1.04;
+
+    letter-spacing: -2.5px;
+
+    font-weight: 700;
+}
+
+.hero h2 .hero-accent {
+    color: var(--pink);
 }
 
 .hero h2::after {
-    content: "";
-
-    display: block;
-
-    width: 55px;
-    height: 3px;
-
-    margin: 24px auto 0;
-
-    background: var(--pink);
-
-    border-radius: 10px;
+    display: none;
 }
 
-.hero p {
-    max-width: 700px;
 
-    font-size: 18px;
+/* =========================================================
+   16. HERO DESCRIPTION
+========================================================= */
+
+.hero p {
+    position: relative;
+    z-index: 2;
+
+    max-width: 650px;
 
     color: var(--muted);
+
+    font-size: 17px;
 
     line-height: 1.8;
 }
 
-.hero-buttons {
-    display: flex;
 
+/* =========================================================
+   17. HERO BUTTONS
+========================================================= */
+
+.hero-buttons {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
     justify-content: center;
 
-    align-items: center;
-
-    gap: 15px;
+    gap: 14px;
 
     margin-top: 35px;
 
     flex-wrap: wrap;
 }
 
+.hero-note {
+    position: relative;
+    z-index: 2;
+
+    margin-top: 32px;
+
+    color: #999;
+
+    font-size: 11px;
+
+    letter-spacing: 1.2px;
+
+    text-transform: uppercase;
+}
+
 
 /* =========================================================
-   15. GENERAL BUTTONS
+   18. BUTTON SYSTEM
 ========================================================= */
 
 button {
+    padding: 13px 28px;
+
     background: var(--black);
+
+    border: 1px solid var(--black);
+    border-radius: var(--radius-sm);
 
     color: var(--white);
 
-    border: 1px solid var(--black);
-
-    padding: 13px 28px;
-
-    border-radius: 4px;
-
     font-size: 14px;
-
     font-weight: 600;
 
     letter-spacing: 0.2px;
@@ -556,7 +653,6 @@ button {
 
 button:hover {
     background: var(--pink);
-
     border-color: var(--pink);
 
     transform: translateY(-2px);
@@ -567,23 +663,21 @@ button:hover {
 
 .secondary-btn {
     background: transparent;
+    border-color: var(--black);
 
     color: var(--black);
-
-    border: 1px solid var(--black);
 }
 
 .secondary-btn:hover {
     background: var(--pink);
+    border-color: var(--pink);
 
     color: var(--white);
-
-    border-color: var(--pink);
 }
 
 
 /* =========================================================
-   16. STATS
+   19. STATS
 ========================================================= */
 
 .stats {
@@ -600,6 +694,8 @@ button:hover {
 }
 
 .stat-box {
+    padding: 30px 20px;
+
     background:
         linear-gradient(
             145deg,
@@ -607,11 +703,8 @@ button:hover {
             var(--soft-blush)
         );
 
-    padding: 30px 20px;
-
     border: 1px solid var(--border);
-
-    border-radius: 12px;
+    border-radius: var(--radius-md);
 
     text-align: center;
 
@@ -622,7 +715,7 @@ button:hover {
 }
 
 .stat-box:hover {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
 
     border-color: rgba(214, 51, 132, 0.25);
 
@@ -631,11 +724,11 @@ button:hover {
 }
 
 .stat-box h3 {
-    font-size: 30px;
+    margin-bottom: 8px;
 
     color: var(--pink);
 
-    margin-bottom: 8px;
+    font-size: 30px;
 }
 
 .stat-box p {
@@ -646,30 +739,50 @@ button:hover {
 
 
 /* =========================================================
-   17. CATEGORIES
+   20. SECTION LABELS
+========================================================= */
+
+.section-label {
+    margin-bottom: 10px;
+
+    color: var(--deep-pink);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    text-align: center;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   21. CATEGORIES
 ========================================================= */
 
 .categories {
-    padding: 85px 8%;
+    padding: 90px 8%;
 
     background: var(--cream);
 }
 
 .categories h2 {
-    text-align: center;
-
-    font-size: 40px;
+    margin-bottom: 50px;
 
     color: var(--black);
 
-    margin-bottom: 45px;
+    font-size: 40px;
 
     letter-spacing: -1px;
+
+    text-align: center;
 }
 
 .categories h2::after,
-.products h2::after,
-.about h2::after {
+.collection h2::after,
+.page-header h2::after {
     content: "";
 
     display: block;
@@ -687,52 +800,106 @@ button:hover {
 .category-grid {
     display: grid;
 
-    grid-template-columns:
-        repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(5, 1fr);
 
-    gap: 20px;
+    gap: 18px;
+
+    max-width: 1400px;
+
+    margin: 0 auto;
 }
 
 .category-card {
-    background:
-        linear-gradient(
-            145deg,
-            var(--white),
-            var(--soft-blush)
-        );
+    position: relative;
 
-    padding: 32px;
+    min-height: 190px;
 
-    color: var(--text);
+    padding: 28px 24px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    overflow: hidden;
+
+    background: var(--white);
 
     border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
 
-    border-radius: 12px;
-
-    box-shadow:
-        0 5px 18px rgba(0, 0, 0, 0.04);
+    box-shadow: var(--shadow-sm);
 
     transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease;
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.category-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: -55px;
+    right: -55px;
+
+    width: 130px;
+    height: 130px;
+
+    border-radius: 50%;
+
+    background: var(--soft-blush);
+
+    transition:
+        transform 0.4s ease,
+        background 0.4s ease;
+}
+
+.category-card::after {
+    content: "";
+
+    position: absolute;
+
+    top: 24px;
+    left: 24px;
+
+    width: 28px;
+    height: 2px;
+
+    background: var(--pink);
+
+    transition: width 0.35s ease;
 }
 
 .category-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
 
-    border-color: rgba(214, 51, 132, 0.25);
+    border-color: rgba(214, 51, 132, 0.28);
 
-    box-shadow:
-        0 18px 40px rgba(214, 51, 132, 0.09);
+    box-shadow: var(--shadow-md);
+}
+
+.category-card:hover::before {
+    transform: scale(1.5);
+
+    background: var(--blush);
+}
+
+.category-card:hover::after {
+    width: 48px;
 }
 
 .category-card h3 {
+    position: relative;
+    z-index: 2;
+
+    margin-bottom: 9px;
+
     color: var(--black);
 
-    margin-bottom: 10px;
+    font-size: 17px;
 
-    font-size: 18px;
+    line-height: 1.35;
 
     transition: color 0.3s ease;
 }
@@ -742,231 +909,19 @@ button:hover {
 }
 
 .category-card p {
+    position: relative;
+    z-index: 2;
+
     color: var(--muted);
 
-    font-size: 14px;
+    font-size: 13px;
+
+    line-height: 1.6;
 }
 
 
 /* =========================================================
-   18. PRODUCTS
-========================================================= */
-
-.products {
-    padding: 85px 8%;
-
-    text-align: center;
-
-    background: var(--white);
-}
-
-.products h2 {
-    font-size: 40px;
-
-    color: var(--black);
-
-    margin-bottom: 45px;
-
-    letter-spacing: -1px;
-}
-
-.product-container {
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(260px, 1fr));
-
-    gap: 28px;
-
-    margin-top: 35px;
-}
-
-.product-card {
-    background: var(--white);
-
-    padding: 20px;
-
-    text-align: center;
-
-    border: 1px solid var(--border);
-
-    border-radius: 12px;
-
-    box-shadow:
-        0 6px 20px rgba(0, 0, 0, 0.05);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease;
-}
-
-.product-card:hover {
-    transform: translateY(-8px);
-
-    border-color: rgba(214, 51, 132, 0.22);
-
-    box-shadow:
-        0 18px 40px rgba(0, 0, 0, 0.09);
-}
-
-.product-card img {
-    width: 100%;
-
-    height: 280px;
-
-    object-fit: contain;
-
-    background:
-        linear-gradient(
-            145deg,
-            var(--cream),
-            var(--soft-blush)
-        );
-
-    padding: 12px;
-
-    border-radius: 9px;
-}
-
-.product-card h3 {
-    margin: 18px 0 8px;
-
-    color: var(--text);
-
-    font-size: 20px;
-}
-
-.price {
-    font-size: 19px;
-
-    font-weight: 700;
-
-    color: var(--pink);
-
-    margin-bottom: 10px;
-}
-
-.product-description {
-    color: var(--muted);
-
-    font-size: 14px;
-
-    line-height: 1.7;
-
-    min-height: 70px;
-}
-
-.product-card button {
-    width: 100%;
-
-    margin-top: 18px;
-}
-
-
-/* =========================================================
-   19. PAGE HEADERS
-========================================================= */
-
-.page-header {
-    text-align: center;
-
-    padding: 75px 20px 40px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--white),
-            var(--soft-blush)
-        );
-}
-
-.page-header h2 {
-    font-size: 44px;
-
-    color: var(--black);
-
-    margin-bottom: 12px;
-
-    letter-spacing: -1px;
-}
-
-.page-header h2::after {
-    content: "";
-
-    display: block;
-
-    width: 45px;
-    height: 3px;
-
-    margin: 15px auto 0;
-
-    background: var(--pink);
-
-    border-radius: 10px;
-}
-
-.page-header p {
-    max-width: 700px;
-
-    margin: 20px auto 0;
-
-    color: var(--muted);
-
-    font-size: 17px;
-}
-
-
-/* =========================================================
-   20. COLLECTION PAGES
-========================================================= */
-
-.collection {
-    max-width: 1250px;
-
-    margin: 0 auto;
-
-    padding: 65px 20px;
-}
-
-.collection h2 {
-    text-align: center;
-
-    color: var(--black);
-
-    font-size: 40px;
-
-    letter-spacing: -1px;
-}
-
-.collection h2::after {
-    content: "";
-
-    display: block;
-
-    width: 45px;
-    height: 3px;
-
-    margin: 15px auto 0;
-
-    background: var(--pink);
-
-    border-radius: 10px;
-}
-
-.collection > p {
-    text-align: center;
-
-    color: var(--muted);
-
-    margin: 20px auto 40px;
-
-    max-width: 700px;
-}
-
-
-/* =========================================================
-   21. ABOUT
+   22. ABOUT
 ========================================================= */
 
 .about {
@@ -983,11 +938,11 @@ button:hover {
 }
 
 .about h2 {
+    margin-bottom: 45px;
+
     color: var(--black);
 
     font-size: 38px;
-
-    margin-bottom: 45px;
 }
 
 .about-container {
@@ -1000,16 +955,14 @@ button:hover {
 }
 
 .about-box {
-    background: var(--white);
-
     padding: 30px;
 
+    background: var(--white);
+
     border: 1px solid var(--border);
+    border-radius: var(--radius-md);
 
-    border-radius: 12px;
-
-    box-shadow:
-        0 6px 20px rgba(0, 0, 0, 0.04);
+    box-shadow: var(--shadow-sm);
 
     transition:
         transform 0.3s ease,
@@ -1018,7 +971,7 @@ button:hover {
 }
 
 .about-box:hover {
-    transform: translateY(-7px);
+    transform: translateY(-6px);
 
     border-color: rgba(214, 51, 132, 0.20);
 
@@ -1027,9 +980,9 @@ button:hover {
 }
 
 .about-box h3 {
-    color: var(--black);
-
     margin-bottom: 12px;
+
+    color: var(--black);
 }
 
 .about-box p {
@@ -1040,31 +993,302 @@ button:hover {
 
 
 /* =========================================================
-   22. SEARCH
+   23. TOMMY'S STANDARD
+========================================================= */
+
+.tommys-standard {
+    position: relative;
+
+    max-width: 760px;
+
+    margin: 55px auto 0;
+
+    padding: 30px 35px;
+
+    background: rgba(255, 255, 255, 0.72);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+}
+
+.tommys-standard::before {
+    content: "“";
+
+    position: absolute;
+
+    top: 3px;
+    left: 20px;
+
+    color: rgba(214, 51, 132, 0.15);
+
+    font-size: 55px;
+
+    line-height: 1;
+}
+
+.standard-label {
+    margin-bottom: 8px;
+
+    color: var(--deep-pink);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.tommys-standard h3 {
+    margin-bottom: 8px;
+
+    color: var(--black);
+
+    font-size: 21px;
+}
+
+.tommys-standard > p:last-child {
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   24. PRODUCTS
+========================================================= */
+
+.products {
+    padding: 85px 8%;
+
+    background: var(--white);
+
+    text-align: center;
+}
+
+.products h2 {
+    margin-bottom: 12px;
+
+    color: var(--black);
+
+    font-size: 40px;
+
+    letter-spacing: -1px;
+}
+
+.section-intro {
+    max-width: 620px;
+
+    margin: 0 auto;
+
+    color: var(--muted);
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+.product-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(260px, 1fr));
+
+    gap: 28px;
+
+    margin-top: 35px;
+align-items: stretch;
+}
+
+.product-card {
+    padding: 18px;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+
+    text-align: center;
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-7px);
+
+    border-color: rgba(214, 51, 132, 0.22);
+
+    box-shadow: var(--shadow-lg);
+}
+
+.product-card img {
+    width: 100%;
+    height: 280px;
+
+    padding: 12px;
+
+    object-fit: contain;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--cream),
+            var(--soft-blush)
+        );
+
+    border-radius: var(--radius-md);
+
+    transition: transform 0.35s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.025);
+}
+
+.product-card h3 {
+    margin: 18px 0 8px;
+
+    color: var(--text);
+
+    font-size: 20px;
+}
+
+.price {
+    margin-bottom: 10px;
+
+    color: var(--pink);
+
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.product-description {
+    min-height: 70px;
+
+    flex: 1;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+.product-card button {
+    width: 100%;
+
+    margin-top: 18px;
+}
+
+
+/* =========================================================
+   25. PAGE HEADERS
+========================================================= */
+
+.page-header {
+    padding: 75px 20px 40px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--white),
+            var(--soft-blush)
+        );
+
+    text-align: center;
+}
+
+.page-header h2 {
+    margin-bottom: 12px;
+
+    color: var(--black);
+
+    font-size: 44px;
+
+    letter-spacing: -1px;
+}
+
+.page-header p {
+    max-width: 700px;
+
+    margin: 20px auto 0;
+
+    color: var(--muted);
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   26. COLLECTION
+========================================================= */
+
+.collection {
+    max-width: 1250px;
+
+    margin: 0 auto;
+
+    padding: 65px 20px;
+}
+
+.collection h2 {
+    color: var(--black);
+
+    font-size: 40px;
+
+    letter-spacing: -1px;
+
+    text-align: center;
+}
+
+.collection > p {
+    max-width: 700px;
+
+    margin: 20px auto 40px;
+
+    color: var(--muted);
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   27. SEARCH
 ========================================================= */
 
 .search-box {
-    text-align: center;
-
     margin: 25px 0;
+
+    text-align: center;
 }
 
 .search-box input {
     width: 90%;
-
     max-width: 500px;
 
     padding: 14px 20px;
 
-    border: 1px solid #ddd;
+    background: var(--white);
 
+    border: 1px solid #ddd;
     border-radius: 30px;
+
+    color: var(--text);
 
     font-size: 15px;
 
     outline: none;
-
-    background: var(--white);
 
     transition:
         border-color 0.3s ease,
@@ -1080,15 +1304,14 @@ button:hover {
 
 
 /* =========================================================
-   23. SORTING
+   28. SORT
 ========================================================= */
 
 .sort-box {
     display: flex;
 
-    justify-content: flex-end;
-
     align-items: center;
+    justify-content: flex-end;
 
     gap: 10px;
 
@@ -1098,11 +1321,12 @@ button:hover {
 .sort-box select {
     padding: 10px 15px;
 
-    border: 1px solid #ddd;
+    background: var(--white);
 
+    border: 1px solid #ddd;
     border-radius: 6px;
 
-    background: var(--white);
+    color: var(--text);
 
     font-size: 14px;
 
@@ -1115,36 +1339,33 @@ button:hover {
 
 
 /* =========================================================
-   24. SHOPPING CART
+   29. CART
 ========================================================= */
 
 .cart-item {
-    background: var(--white);
+    margin: 20px 0;
 
     padding: 25px;
 
-    margin: 20px 0;
+    background: var(--white);
 
     border: 1px solid var(--border);
+    border-radius: var(--radius-md);
 
-    border-radius: 10px;
-
-    box-shadow:
-        0 6px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-sm);
 }
 
 .cart-item h3 {
-    color: var(--black);
-
     margin-bottom: 10px;
+
+    color: var(--black);
 }
 
 .quantity-controls {
     display: flex;
 
-    justify-content: center;
-
     align-items: center;
+    justify-content: center;
 
     gap: 15px;
 
@@ -1153,7 +1374,6 @@ button:hover {
 
 .quantity-controls button {
     width: 40px;
-
     height: 40px;
 
     padding: 0;
@@ -1165,7 +1385,6 @@ button:hover {
 
 .quantity-controls span {
     font-size: 17px;
-
     font-weight: 700;
 }
 
@@ -1174,11 +1393,11 @@ button:hover {
 }
 
 .clear-cart-btn {
+    margin-right: 15px;
+
     background: var(--soft-black);
 
     border-color: var(--soft-black);
-
-    margin-right: 15px;
 }
 
 .clear-cart-btn:hover {
@@ -1189,7 +1408,7 @@ button:hover {
 
 
 /* =========================================================
-   25. CHECKOUT FORM
+   30. CHECKOUT
 ========================================================= */
 
 .checkout-form {
@@ -1198,7 +1417,6 @@ button:hover {
     margin: 50px auto;
 
     display: flex;
-
     flex-direction: column;
 
     gap: 18px;
@@ -1214,11 +1432,12 @@ button:hover {
 
     padding: 15px;
 
-    border: 1px solid #ddd;
+    background: var(--white);
 
+    border: 1px solid #ddd;
     border-radius: 7px;
 
-    background: var(--white);
+    color: var(--text);
 
     font-size: 15px;
 
@@ -1245,30 +1464,27 @@ button:hover {
 
 
 /* =========================================================
-   26. CHECKOUT SUMMARY
+   31. CHECKOUT SUMMARY
 ========================================================= */
 
 .checkout-summary {
-    background: var(--white);
-
-    border: 1px solid var(--border);
-
-    border-radius: 10px;
+    margin: 20px 0 30px;
 
     padding: 20px;
 
-    margin: 20px 0 30px;
+    background: var(--white);
 
-    box-shadow:
-        0 5px 18px rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+
+    box-shadow: var(--shadow-sm);
 }
 
 .checkout-summary-item {
     display: flex;
 
-    justify-content: space-between;
-
     align-items: center;
+    justify-content: space-between;
 
     gap: 20px;
 
@@ -1288,71 +1504,66 @@ button:hover {
 }
 
 .checkout-summary hr {
-    border: none;
-
-    border-top: 1px solid var(--border);
-
     margin: 12px 0;
+
+    border: none;
+    border-top: 1px solid var(--border);
 }
 
 .checkout-summary-total {
     display: flex;
 
+    align-items: center;
     justify-content: space-between;
 
-    align-items: center;
+    padding-top: 8px;
 
     font-size: 18px;
-
-    padding-top: 8px;
 }
 
 .checkout-summary-total strong:last-child {
-    font-size: 20px;
-
     color: var(--pink);
+
+    font-size: 20px;
 }
 
 
 /* =========================================================
-   27. PAYMENT CARD
+   32. PAYMENT CARD
 ========================================================= */
 
 .payment-card {
-    background: var(--white);
-
-    border: 1px solid var(--border);
-
-    border-radius: 10px;
+    margin: 20px 0 30px;
 
     padding: 22px;
 
-    margin: 20px 0 30px;
+    background: var(--white);
 
-    box-shadow:
-        0 5px 18px rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+
+    box-shadow: var(--shadow-sm);
 }
 
 .payment-card h4 {
     margin-bottom: 8px;
 
-    font-size: 19px;
-
     color: var(--black);
+
+    font-size: 19px;
 }
 
 .payment-instruction {
-    color: #666;
-
     margin-bottom: 20px;
+
+    color: #666;
 }
 
 .payment-detail {
     display: flex;
 
-    justify-content: space-between;
-
     align-items: center;
+    justify-content: space-between;
 
     gap: 20px;
 
@@ -1372,15 +1583,14 @@ button:hover {
 }
 
 .payment-warning {
-    background: var(--soft-blush);
-
-    border-left: 3px solid var(--pink);
-
-    border-radius: 8px;
+    margin-top: 18px;
 
     padding: 13px;
 
-    margin-top: 18px;
+    background: var(--soft-blush);
+
+    border-left: 3px solid var(--pink);
+    border-radius: 8px;
 
     font-size: 14px;
 
@@ -1388,18 +1598,18 @@ button:hover {
 }
 
 .payment-note {
-    font-size: 14px;
-
-    line-height: 1.6;
-
     margin-top: 18px;
 
     color: #555;
+
+    font-size: 14px;
+
+    line-height: 1.6;
 }
 
 
 /* =========================================================
-   28. OUT OF STOCK
+   33. OUT OF STOCK
 ========================================================= */
 
 .out-of-stock-btn {
@@ -1407,23 +1617,21 @@ button:hover {
 
     padding: 12px 18px;
 
-    border: none;
-
-    border-radius: 5px;
-
     background: #dedede;
+
+    border: none;
+    border-radius: 5px;
 
     color: #666;
 
     font-size: 13px;
-
     font-weight: 600;
 
-    cursor: not-allowed;
+    letter-spacing: 0.5px;
 
     text-transform: uppercase;
 
-    letter-spacing: 0.5px;
+    cursor: not-allowed;
 
     box-shadow: none;
 }
@@ -1440,13 +1648,15 @@ button:hover {
 
 
 /* =========================================================
-   29. NEWSLETTER / WHATSAPP CTA
+   34. NEWSLETTER
 ========================================================= */
 
 .newsletter {
     position: relative;
 
     overflow: hidden;
+
+    padding: 85px 20px;
 
     background:
         radial-gradient(
@@ -1469,16 +1679,14 @@ button:hover {
     color: var(--white);
 
     text-align: center;
-
-    padding: 85px 20px;
 }
 
 .newsletter h2 {
     margin-bottom: 15px;
 
-    font-size: 40px;
-
     color: var(--white);
+
+    font-size: 40px;
 }
 
 .newsletter p {
@@ -1489,9 +1697,16 @@ button:hover {
     color: rgba(255, 255, 255, 0.92);
 }
 
+.newsletter-label {
+    margin-bottom: 12px;
+
+    color: rgba(255, 255, 255, 0.85);
+}
+
 .newsletter form {
     display: flex;
 
+    align-items: center;
     justify-content: center;
 
     gap: 12px;
@@ -1504,8 +1719,9 @@ button:hover {
 
     padding: 15px;
 
-    border: none;
+    background: var(--white);
 
+    border: none;
     border-radius: 4px;
 
     font-size: 15px;
@@ -1516,28 +1732,27 @@ button:hover {
 .newsletter button {
     background: var(--white);
 
-    color: var(--deep-pink);
-
     border-color: var(--white);
+
+    color: var(--deep-pink);
 }
 
 .newsletter button:hover {
     background: var(--black);
 
-    color: var(--white);
-
     border-color: var(--black);
 
-    box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.18);
+    color: var(--white);
 }
 
 
 /* =========================================================
-   30. FOOTER
+   35. FOOTER
 ========================================================= */
 
 footer {
+    padding: 65px 8%;
+
     background:
         linear-gradient(
             135deg,
@@ -1545,13 +1760,11 @@ footer {
             #21151c
         );
 
+    border-top: 3px solid var(--pink);
+
     color: var(--white);
 
-    padding: 65px 8%;
-
     text-align: center;
-
-    border-top: 3px solid var(--pink);
 }
 
 footer h2,
@@ -1566,9 +1779,9 @@ footer h2 {
 }
 
 footer p {
-    color: #d7d7d7;
-
     margin: 9px 0;
+
+    color: #d7d7d7;
 
     font-size: 14px;
 }
@@ -1586,7 +1799,7 @@ footer p:last-child {
 footer a {
     color: #f39ac0;
 
-    transition: color 0.3s ease;
+    transition: color 0.25s ease;
 }
 
 footer a:hover {
@@ -1595,29 +1808,27 @@ footer a:hover {
 
 
 /* =========================================================
-   31. WHATSAPP FLOATING BUTTON
+   36. WHATSAPP
 ========================================================= */
 
 .whatsapp-btn {
     position: fixed;
 
-    bottom: 25px;
-
     right: 25px;
+    bottom: 80px;
 
     width: 58px;
-
     height: 58px;
+
+    z-index: 1100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     background: var(--whatsapp);
 
     border-radius: 50%;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
 
     color: var(--white);
 
@@ -1631,8 +1842,6 @@ footer a:hover {
     transition:
         transform 0.3s ease,
         box-shadow 0.3s ease;
-
-    z-index: 1100;
 }
 
 .whatsapp-btn:hover {
@@ -1644,7 +1853,153 @@ footer a:hover {
 
 
 /* =========================================================
-   32. MOBILE RESPONSIVE
+   37. PREMIUM CART TOAST
+========================================================= */
+
+#cartToast {
+    position: fixed;
+
+    right: 25px;
+    bottom: 95px;
+
+    width: min(380px, calc(100vw - 40px));
+
+    z-index: 3000;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 15px 16px;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--pink);
+    border-radius: 7px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.14);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        translateY(20px)
+        translateX(10px);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
+}
+
+#cartToast.show {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        translateX(0);
+}
+
+.cart-toast-icon {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--soft-blush);
+
+    border-radius: 50%;
+
+    color: var(--pink);
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.cart-toast-content {
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.cart-toast-content strong {
+    color: var(--black);
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.cart-toast-content span {
+    overflow: hidden;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+.cart-toast-link {
+    flex-shrink: 0;
+
+    color: var(--pink);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    transition: color 0.2s ease;
+}
+
+.cart-toast-link:hover {
+    color: var(--deep-pink);
+}
+
+
+/* =========================================================
+   38. ACCESSIBILITY
+========================================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--pink);
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   39. TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+
+/* =========================================================
+   40. MOBILE
 ========================================================= */
 
 @media (max-width: 768px) {
@@ -1667,7 +2022,6 @@ footer a:hover {
 
     .header-actions .search-box input {
         width: 150px;
-
         height: 38px;
 
         font-size: 13px;
@@ -1696,6 +2050,12 @@ footer a:hover {
         padding: 65px 20px;
     }
 
+    .hero-standard {
+        font-size: 10px;
+
+        letter-spacing: 1.8px;
+    }
+
     .hero h2 {
         font-size: 40px;
 
@@ -1707,13 +2067,13 @@ footer a:hover {
     }
 
     .hero-buttons {
-        flex-direction: column;
-
         width: 100%;
-
         max-width: 330px;
+
+        flex-direction: column;
     }
 
+    .hero-buttons a,
     .hero-buttons button {
         width: 100%;
     }
@@ -1752,6 +2112,40 @@ footer a:hover {
     .page-header h2,
     .collection h2 {
         font-size: 32px;
+    }
+
+    .section-label {
+        font-size: 10px;
+
+        letter-spacing: 1.6px;
+    }
+
+
+    /* CATEGORIES */
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 14px;
+    }
+
+    .category-card {
+        min-height: 175px;
+
+        padding: 24px 20px;
+    }
+
+
+    /* STANDARD */
+
+    .tommys-standard {
+        margin-top: 40px;
+
+        padding: 25px 20px;
+    }
+
+    .tommys-standard h3 {
+        font-size: 18px;
     }
 
 
@@ -1809,10 +2203,7 @@ footer a:hover {
         font-size: 32px;
     }
 
-    .newsletter input {
-        width: 100%;
-    }
-
+    .newsletter input,
     .newsletter button {
         width: 100%;
     }
@@ -1825,10 +2216,19 @@ footer a:hover {
     }
 
 
-    /* QUANTITY */
+    /* CART TOAST */
 
-    .quantity-controls {
-        gap: 10px;
+    #cartToast {
+        right: 15px;
+        bottom: 85px;
+
+        width: calc(100vw - 30px);
+
+        padding: 14px;
+    }
+
+    .cart-toast-link {
+        font-size: 11px;
     }
 
 
@@ -1836,12 +2236,10 @@ footer a:hover {
 
     .whatsapp-btn {
         width: 54px;
-
         height: 54px;
 
         right: 18px;
-
-        bottom: 18px;
+        bottom: 75px;
 
         font-size: 25px;
     }
@@ -1849,7 +2247,7 @@ footer a:hover {
 
 
 /* =========================================================
-   33. SMALL PHONES
+   41. SMALL PHONES
 ========================================================= */
 
 @media (max-width: 480px) {
@@ -1872,20 +2270,50 @@ footer a:hover {
         padding: 25px;
     }
 
+    .side-menu-header h2 {
+        font-size: 18px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        padding: 65px 18px;
+    }
+
+    .hero-standard {
+        font-size: 9px;
+
+        letter-spacing: 1.4px;
+    }
 
     .hero h2 {
-        font-size: 34px;
+        font-size: 35px;
+
+        letter-spacing: -1.2px;
     }
 
     .hero p {
         font-size: 15px;
+
+        line-height: 1.7;
     }
 
+    .hero-note {
+        font-size: 9px;
+
+        letter-spacing: 1px;
+    }
+
+
+    /* STATS */
 
     .stats {
         grid-template-columns: 1fr;
     }
 
+
+    /* PRODUCTS */
 
     .product-container {
         grid-template-columns: 1fr;
@@ -1895,6 +2323,8 @@ footer a:hover {
         height: 250px;
     }
 
+
+    /* CHECKOUT */
 
     .checkout-summary-item,
     .payment-detail {
@@ -1910,6 +2340,8 @@ footer a:hover {
     }
 
 
+    /* COLLECTION */
+
     .collection {
         padding: 50px 15px;
     }
@@ -1917,22 +2349,7 @@ footer a:hover {
 
 
 /* =========================================================
-   34. ACCESSIBILITY
-========================================================= */
-
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-    outline: 2px solid var(--pink);
-
-    outline-offset: 3px;
-}
-
-
-/* =========================================================
-   35. REDUCED MOTION
+   42. REDUCED MOTION
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
