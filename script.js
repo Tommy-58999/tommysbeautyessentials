@@ -50,7 +50,9 @@ const discountCodes = {
 // =====================================
 
 function formatCurrency(amount) {
+
     return "₦" + Number(amount).toLocaleString("en-NG");
+
 }
 
 
@@ -71,19 +73,25 @@ function addToCart(productName, productPrice) {
     } else {
 
         cart.push({
+
             name: productName,
+
             price: Number(productPrice),
+
             quantity: 1
+
         });
 
     }
 
     saveCart();
 
-   showCartToast(productName); 
+    showCartToast(productName);
 
     displayCart();
+
     displayCheckoutSummary();
+
     updateCartCount();
 
 }
@@ -126,24 +134,36 @@ function displayCart() {
 
         cartItems.innerHTML = `
             <div class="cart-item">
+
                 <h2>Your cart is empty 🛒</h2>
-                <p>Add some beauty essentials to get started.</p>
+
+                <p>
+                    Add some beauty essentials to get started.
+                </p>
+
             </div>
         `;
 
         if (cartTotal) {
+
             cartTotal.textContent = "₦0";
+
         }
 
         if (checkoutBtn) {
+
             checkoutBtn.disabled = true;
+
         }
 
         return;
+
     }
 
     if (checkoutBtn) {
+
         checkoutBtn.disabled = false;
+
     }
 
     let total = 0;
@@ -151,17 +171,22 @@ function displayCart() {
     cart.forEach((item, index) => {
 
         const subtotal =
-            Number(item.price) * Number(item.quantity);
+            Number(item.price) *
+            Number(item.quantity);
 
         total += subtotal;
 
         cartItems.innerHTML += `
+
             <div class="cart-item">
 
-                <h3>${item.name}</h3>
+                <h3>
+                    ${item.name}
+                </h3>
 
                 <p>
-                    Price: ${formatCurrency(item.price)}
+                    Price:
+                    ${formatCurrency(item.price)}
                 </p>
 
                 <div class="quantity-controls">
@@ -173,7 +198,9 @@ function displayCart() {
                         −
                     </button>
 
-                    <span>${item.quantity}</span>
+                    <span>
+                        ${item.quantity}
+                    </span>
 
                     <button
                         onclick="increaseQuantity(${index})"
@@ -198,12 +225,16 @@ function displayCart() {
                 <hr>
 
             </div>
+
         `;
 
     });
 
     if (cartTotal) {
-        cartTotal.textContent = formatCurrency(total);
+
+        cartTotal.textContent =
+            formatCurrency(total);
+
     }
 
 }
@@ -227,19 +258,23 @@ function displayCheckoutSummary() {
         `;
 
         return;
+
     }
 
     let subtotal = 0;
+
     let summaryHTML = "";
 
     cart.forEach(item => {
 
         const itemSubtotal =
-            Number(item.price) * Number(item.quantity);
+            Number(item.price) *
+            Number(item.quantity);
 
         subtotal += itemSubtotal;
 
         summaryHTML += `
+
             <div class="checkout-summary-item">
 
                 <span>
@@ -251,12 +286,16 @@ function displayCheckoutSummary() {
                 </strong>
 
             </div>
+
         `;
 
     });
 
     const discount =
-        Math.min(appliedDiscount, subtotal);
+        Math.min(
+            appliedDiscount,
+            subtotal
+        );
 
     const total =
         subtotal - discount;
@@ -319,7 +358,8 @@ function displayCheckoutSummary() {
 
     `;
 
-    summary.innerHTML = summaryHTML;
+    summary.innerHTML =
+        summaryHTML;
 
 }
 
@@ -337,7 +377,9 @@ function increaseQuantity(index) {
     saveCart();
 
     displayCart();
+
     displayCheckoutSummary();
+
     updateCartCount();
 
 }
@@ -364,7 +406,9 @@ function decreaseQuantity(index) {
     saveCart();
 
     displayCart();
+
     displayCheckoutSummary();
+
     updateCartCount();
 
 }
@@ -383,7 +427,9 @@ function removeItem(index) {
     saveCart();
 
     displayCart();
+
     displayCheckoutSummary();
+
     updateCartCount();
 
 }
@@ -404,12 +450,15 @@ function clearCart() {
         cart = [];
 
         appliedDiscount = 0;
+
         appliedDiscountCode = "";
 
         saveCart();
 
         displayCart();
+
         displayCheckoutSummary();
+
         updateCartCount();
 
     }
@@ -431,7 +480,11 @@ function updateCartCount() {
     let count = 0;
 
     cart.forEach(item => {
-        count += Number(item.quantity);
+
+        count += Number(
+            item.quantity
+        );
+
     });
 
     cartLink.innerHTML =
@@ -448,7 +501,8 @@ function generateOrderNumber() {
 
     const randomNumber =
         Math.floor(
-            1000 + Math.random() * 9000
+            1000 +
+            Math.random() * 9000
         );
 
     return (
@@ -476,11 +530,14 @@ function applyDiscount() {
     if (!input || !message) return;
 
     const code =
-        input.value.trim().toUpperCase();
+        input.value
+            .trim()
+            .toUpperCase();
 
     if (!code) {
 
         appliedDiscount = 0;
+
         appliedDiscountCode = "";
 
         message.textContent =
@@ -489,6 +546,7 @@ function applyDiscount() {
         displayCheckoutSummary();
 
         return;
+
     }
 
     const discount =
@@ -497,6 +555,7 @@ function applyDiscount() {
     if (!discount) {
 
         appliedDiscount = 0;
+
         appliedDiscountCode = "";
 
         message.textContent =
@@ -505,6 +564,7 @@ function applyDiscount() {
         displayCheckoutSummary();
 
         return;
+
     }
 
     let subtotal = 0;
@@ -512,13 +572,18 @@ function applyDiscount() {
     cart.forEach(item => {
 
         subtotal +=
-            Number(item.price) * Number(item.quantity);
+            Number(item.price) *
+            Number(item.quantity);
 
     });
 
-    if (subtotal < discount.minimum) {
+    if (
+        subtotal <
+        discount.minimum
+    ) {
 
         appliedDiscount = 0;
+
         appliedDiscountCode = "";
 
         message.textContent =
@@ -527,12 +592,17 @@ function applyDiscount() {
         displayCheckoutSummary();
 
         return;
+
     }
 
-    if (discount.type === "percentage") {
+    if (
+        discount.type ===
+        "percentage"
+    ) {
 
         appliedDiscount =
-            subtotal * (discount.value / 100);
+            subtotal *
+            (discount.value / 100);
 
     } else {
 
@@ -542,9 +612,13 @@ function applyDiscount() {
     }
 
     appliedDiscount =
-        Math.min(appliedDiscount, subtotal);
+        Math.min(
+            appliedDiscount,
+            subtotal
+        );
 
-    appliedDiscountCode = code;
+    appliedDiscountCode =
+        code;
 
     message.textContent =
         `✅ ${code} applied! You saved ${formatCurrency(appliedDiscount)}.`;
@@ -562,32 +636,58 @@ function placeOrder(event) {
 
     event.preventDefault();
 
+
+    // =================================
+    // CHECK CART
+    // =================================
+
     if (cart.length === 0) {
 
         alert(
             "Your cart is empty. Please add a product before placing an order."
         );
 
-        window.location.href = "cart.html";
+        window.location.href =
+            "cart.html";
 
         return;
+
     }
 
 
-    // CUSTOMER INFORMATION
+    // =================================
+    // GET CUSTOMER INFORMATION
+    // =================================
 
     const nameInput =
-        document.querySelector('input[type="text"]');
+        document.getElementById(
+            "customerName"
+        );
 
     const emailInput =
-        document.querySelector('input[type="email"]');
+        document.getElementById(
+            "customerEmail"
+        );
 
     const phoneInput =
-        document.querySelector('input[type="tel"]');
+        document.getElementById(
+            "customerPhone"
+        );
 
-    const textareas =
-        document.querySelectorAll("textarea");
+    const addressInput =
+        document.getElementById(
+            "deliveryAddress"
+        );
 
+    const notesInput =
+        document.getElementById(
+            "orderNotes"
+        );
+
+
+    // =================================
+    // GET VALUES
+    // =================================
 
     const name =
         nameInput
@@ -605,17 +705,19 @@ function placeOrder(event) {
             : "";
 
     const address =
-        textareas[0]
-            ? textareas[0].value.trim()
+        addressInput
+            ? addressInput.value.trim()
             : "";
 
     const notes =
-        textareas[1]
-            ? textareas[1].value.trim()
+        notesInput
+            ? notesInput.value.trim()
             : "";
 
 
+    // =================================
     // VALIDATION
+    // =================================
 
     if (
         !name ||
@@ -629,16 +731,21 @@ function placeOrder(event) {
         );
 
         return;
+
     }
 
 
+    // =================================
     // ORDER NUMBER
+    // =================================
 
     const orderNumber =
         generateOrderNumber();
 
 
+    // =================================
     // CALCULATE ORDER
+    // =================================
 
     let subtotal = 0;
 
@@ -647,7 +754,8 @@ function placeOrder(event) {
     cart.forEach(item => {
 
         const itemSubtotal =
-            Number(item.price) * Number(item.quantity);
+            Number(item.price) *
+            Number(item.quantity);
 
         subtotal += itemSubtotal;
 
@@ -664,10 +772,13 @@ function placeOrder(event) {
         );
 
     const total =
-        subtotal - discountAmount;
+        subtotal -
+        discountAmount;
 
 
+    // =================================
     // WHATSAPP MESSAGE
+    // =================================
 
     const whatsappMessage =
 `🛍️ NEW ORDER - TOMMY'S BEAUTY ESSENTIALS
@@ -712,7 +823,9 @@ Thank you!
 `;
 
 
+    // =================================
     // OPEN WHATSAPP
+    // =================================
 
     const phoneNumber =
         "2349115180053";
@@ -726,21 +839,28 @@ Thank you!
     );
 
 
+    // =================================
     // CLEAR CART
+    // =================================
 
     cart = [];
 
     appliedDiscount = 0;
+
     appliedDiscountCode = "";
 
     saveCart();
 
     displayCart();
+
     displayCheckoutSummary();
+
     updateCartCount();
 
 
+    // =================================
     // SUCCESS MESSAGE
+    // =================================
 
     alert(
         `Order ${orderNumber} has been submitted successfully!`
@@ -756,25 +876,34 @@ Thank you!
 function searchProducts() {
 
     const input =
-        document.getElementById("searchInput");
+        document.getElementById(
+            "searchInput"
+        );
 
     if (!input) return;
 
     const filter =
-        input.value.trim().toLowerCase();
+        input.value
+            .trim()
+            .toLowerCase();
 
     const products =
-        document.querySelectorAll(".product-card");
+        document.querySelectorAll(
+            ".product-card"
+        );
 
     products.forEach(product => {
 
         const title =
-            product.querySelector("h3");
+            product.querySelector(
+                "h3"
+            );
 
         if (!title) return;
 
         const name =
-            title.textContent.toLowerCase();
+            title.textContent
+                .toLowerCase();
 
         product.style.display =
             name.includes(filter)
@@ -793,33 +922,46 @@ function searchProducts() {
 function sortProducts() {
 
     const sort =
-        document.getElementById("sort");
+        document.getElementById(
+            "sort"
+        );
 
     if (!sort) return;
 
     const container =
-        document.querySelector(".product-container");
+        document.querySelector(
+            ".product-container"
+        );
 
     if (!container) return;
 
     const cards =
         Array.from(
-            container.querySelectorAll(".product-card")
+            container.querySelectorAll(
+                ".product-card"
+            )
         );
 
     cards.sort((a, b) => {
 
         const priceElementA =
-            a.querySelector(".price");
+            a.querySelector(
+                ".price"
+            );
 
         const priceElementB =
-            b.querySelector(".price");
+            b.querySelector(
+                ".price"
+            );
 
         const priceA =
             priceElementA
                 ? parseInt(
                     priceElementA.textContent
-                        .replace(/[₦,A-Za-z ]/g, "")
+                        .replace(
+                            /[₦,A-Za-z ]/g,
+                            ""
+                        )
                 )
                 : 0;
 
@@ -827,18 +969,25 @@ function sortProducts() {
             priceElementB
                 ? parseInt(
                     priceElementB.textContent
-                        .replace(/[₦,A-Za-z ]/g, "")
+                        .replace(
+                            /[₦,A-Za-z ]/g,
+                            ""
+                        )
                 )
                 : 0;
 
         const nameA =
             a.querySelector("h3")
-                ? a.querySelector("h3").textContent.trim()
+                ? a.querySelector(
+                    "h3"
+                ).textContent.trim()
                 : "";
 
         const nameB =
             b.querySelector("h3")
-                ? b.querySelector("h3").textContent.trim()
+                ? b.querySelector(
+                    "h3"
+                ).textContent.trim()
                 : "";
 
         switch (sort.value) {
@@ -850,19 +999,26 @@ function sortProducts() {
                 return priceB - priceA;
 
             case "a-z":
-                return nameA.localeCompare(nameB);
+                return nameA.localeCompare(
+                    nameB
+                );
 
             case "z-a":
-                return nameB.localeCompare(nameA);
+                return nameB.localeCompare(
+                    nameA
+                );
 
             default:
                 return 0;
+
         }
 
     });
 
     cards.forEach(card => {
+
         container.appendChild(card);
+
     });
 
 }
@@ -877,20 +1033,28 @@ function sendContactMessage(event) {
     event.preventDefault();
 
     const nameElement =
-        document.getElementById("contactName");
+        document.getElementById(
+            "contactName"
+        );
 
     const emailElement =
-        document.getElementById("contactEmail");
+        document.getElementById(
+            "contactEmail"
+        );
 
     const messageElement =
-        document.getElementById("contactMessage");
+        document.getElementById(
+            "contactMessage"
+        );
 
     if (
         !nameElement ||
         !emailElement ||
         !messageElement
     ) {
+
         return;
+
     }
 
     const name =
@@ -903,13 +1067,18 @@ function sendContactMessage(event) {
         messageElement.value.trim();
 
 
-    if (!name || !email || !message) {
+    if (
+        !name ||
+        !email ||
+        !message
+    ) {
 
         alert(
             "Please fill in your name, email and message."
         );
 
         return;
+
     }
 
 
@@ -949,17 +1118,27 @@ Sent from Tommy's Beauty Essentials website.
 function toggleMenu() {
 
     const nav =
-        document.getElementById("mainNav");
+        document.getElementById(
+            "mainNav"
+        );
 
     const overlay =
-        document.querySelector(".menu-overlay");
+        document.querySelector(
+            ".menu-overlay"
+        );
 
     if (!nav) return;
 
-    nav.classList.toggle("mobile-menu-open");
+    nav.classList.toggle(
+        "mobile-menu-open"
+    );
 
     if (overlay) {
-        overlay.classList.toggle("mobile-menu-open");
+
+        overlay.classList.toggle(
+            "mobile-menu-open"
+        );
+
     }
 
 }
@@ -970,53 +1149,90 @@ function toggleMenu() {
 // =====================================
 
 displayCart();
+
 displayCheckoutSummary();
+
 updateCartCount();
+
+
 // =====================================
 // PREMIUM CART TOAST
 // =====================================
 
 function showCartToast(productName) {
 
-    let toast = document.getElementById("cartToast");
+    let toast =
+        document.getElementById(
+            "cartToast"
+        );
 
     if (!toast) {
 
-        toast = document.createElement("div");
+        toast =
+            document.createElement(
+                "div"
+            );
 
-        toast.id = "cartToast";
+        toast.id =
+            "cartToast";
 
         toast.innerHTML = `
-            <div class="cart-toast-icon">✓</div>
 
-            <div class="cart-toast-content">
-                <strong>Added to cart</strong>
-                <span></span>
+            <div class="cart-toast-icon">
+                ✓
             </div>
 
-            <a href="cart.html" class="cart-toast-link">
+            <div class="cart-toast-content">
+
+                <strong>
+                    Added to cart
+                </strong>
+
+                <span></span>
+
+            </div>
+
+            <a
+                href="cart.html"
+                class="cart-toast-link"
+            >
                 View cart
             </a>
+
         `;
 
-        document.body.appendChild(toast);
+        document.body.appendChild(
+            toast
+        );
+
     }
 
-    toast.querySelector("span").textContent =
+    toast.querySelector(
+        "span"
+    ).textContent =
         productName;
 
-    toast.classList.remove("show");
+    toast.classList.remove(
+        "show"
+    );
 
-    // Restart animation cleanly
     void toast.offsetWidth;
 
-    toast.classList.add("show");
+    toast.classList.add(
+        "show"
+    );
 
-    clearTimeout(window.cartToastTimer);
+    clearTimeout(
+        window.cartToastTimer
+    );
 
-    window.cartToastTimer = setTimeout(() => {
+    window.cartToastTimer =
+        setTimeout(() => {
 
-        toast.classList.remove("show");
+            toast.classList.remove(
+                "show"
+            );
 
-    }, 3500);
+        }, 3500);
+
 }

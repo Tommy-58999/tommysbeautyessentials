@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,9 +13,7 @@
 
 <body>
 
-<header>
-
-  <header class="site-header">
+<header class="site-header">
 
     <div class="header-main">
 
@@ -29,7 +28,8 @@
                     type="text"
                     id="searchInput"
                     placeholder="Search products..."
-                    onkeyup="searchProducts()">
+                    onkeyup="searchProducts()"
+                >
             </div>
 
             <a href="cart.html" class="header-cart" id="cart-link">
@@ -39,7 +39,8 @@
             <button
                 class="mobile-menu-btn"
                 onclick="toggleMenu()"
-                aria-label="Open navigation menu">
+                aria-label="Open navigation menu"
+            >
                 ☰
             </button>
 
@@ -48,6 +49,7 @@
     </div>
 
 </header>
+
 
 <!-- SIDE NAVIGATION -->
 
@@ -62,7 +64,8 @@
         <button
             class="close-menu-btn"
             onclick="toggleMenu()"
-            aria-label="Close navigation menu">
+            aria-label="Close navigation menu"
+        >
             ×
         </button>
 
@@ -90,9 +93,10 @@
 
     </nav>
 
-</aside>  
+</aside>
 
-</header>
+
+<!-- CHECKOUT -->
 
 <section class="collection">
 
@@ -100,114 +104,149 @@
 
     <p>Please fill in your details below.</p>
 
-    <form class="checkout-form" onsubmit="placeOrder(event)">
+
+    <form
+        class="checkout-form"
+        onsubmit="placeOrder(event)"
+    >
+
+        <!-- CUSTOMER DETAILS -->
 
         <input
             type="text"
+            id="customerName"
             placeholder="Full Name"
+            autocomplete="name"
             required
         >
 
         <input
             type="email"
+            id="customerEmail"
             placeholder="Email Address"
+            autocomplete="email"
             required
         >
 
         <input
             type="tel"
+            id="customerPhone"
             placeholder="Phone Number"
+            autocomplete="tel"
             required
         >
 
         <textarea
+            id="deliveryAddress"
             placeholder="Delivery Address"
             rows="4"
+            autocomplete="street-address"
             required
         ></textarea>
 
         <textarea
+            id="orderNotes"
             placeholder="Order Notes (Optional)"
             rows="3"
         ></textarea>
 
+
+        <!-- ORDER SUMMARY -->
+
         <h3>Order Summary</h3>
 
-<div id="checkout-summary" class="checkout-summary">
-    <p>Loading your order...</p>
-</div>
-<div class="discount-section">
-
-    <h3>Have a discount code?</h3>
-
-    <div class="discount-input-group">
-
-        <input
-            type="text"
-            id="discountCode"
-            placeholder="Enter discount code"
+        <div
+            id="checkout-summary"
+            class="checkout-summary"
         >
+            <p>Loading your order...</p>
+        </div>
+
+
+        <!-- DISCOUNT -->
+
+        <div class="discount-section">
+
+            <h3>Have a discount code?</h3>
+
+            <div class="discount-input-group">
+
+                <input
+                    type="text"
+                    id="discountCode"
+                    placeholder="Enter discount code"
+                >
+
+                <button
+                    type="button"
+                    onclick="applyDiscount()"
+                >
+                    Apply
+                </button>
+
+            </div>
+
+            <p id="discountMessage"></p>
+
+        </div>
+
+
+        <!-- PAYMENT -->
+
+        <h3>Payment Details</h3>
+
+        <div class="payment-card">
+
+            <h4>💳 Make Your Payment</h4>
+
+            <p class="payment-instruction">
+                Please transfer the exact order total to the account below.
+            </p>
+
+            <div class="payment-detail">
+                <span>Bank</span>
+                <strong>Opay</strong>
+            </div>
+
+            <div class="payment-detail">
+                <span>Account Name</span>
+                <strong>Okuneye Oluwatofunmi</strong>
+            </div>
+
+            <div class="payment-detail">
+                <span>Account Number</span>
+                <strong>7046308160</strong>
+            </div>
+
+            <div class="payment-warning">
+                ⚠️ Please make sure you transfer the exact amount shown in your
+                Order Summary.
+            </div>
+
+            <p class="payment-note">
+                After making your payment, click
+                <strong>Place Order</strong>.
+                Your order details will be sent to us on WhatsApp for confirmation.
+            </p>
+
+        </div>
+
+
+        <!-- PLACE ORDER -->
 
         <button
-            type="button"
-            onclick="applyDiscount()"
+            type="submit"
+            class="checkout-btn"
         >
-            Apply
+            Place Order
         </button>
-
-    </div>
-
-    <p id="discountMessage"></p>
-
-</div>
-
-<h3>Payment Details</h3>
-
-<div class="payment-card">
-
-    <h4>💳 Make Your Payment</h4>
-
-    <p class="payment-instruction">
-        Please transfer the exact order total to the account below.
-    </p>
-
-    <div class="payment-detail">
-        <span>Bank</span>
-        <strong>Opay</strong>
-    </div>
-
-    <div class="payment-detail">
-        <span>Account Name</span>
-        <strong>Okuneye Oluwatofunmi</strong>
-    </div>
-
-    <div class="payment-detail">
-        <span>Account Number</span>
-        <strong>7046308160</strong>
-    </div>
-
-    <div class="payment-warning">
-        ⚠️ Please make sure you transfer the exact amount shown in your
-        Order Summary.
-    </div>
-
-    <p class="payment-note">
-        After making your payment, click <strong>Place Order</strong>.
-        Your order details will be sent to us on WhatsApp for confirmation.
-    </p>
-
-</div>
-
-<button type="submit" class="checkout-btn">
-    Place Order
-</button>
 
     </form>
 
 </section>
 
 
-<script src="script.js"></script>
+<script src="scripts.js"></script>
 
 </body>
 </html>
