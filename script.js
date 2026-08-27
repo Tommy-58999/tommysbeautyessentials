@@ -20,8 +20,8 @@ const discountCodes = {
 
     GLOW500: {
         type: "fixed",
-        value: 500,
-        minimum: 0
+        value: 300,
+        minimum: 2000
     },
 
     WELCOME15: {
